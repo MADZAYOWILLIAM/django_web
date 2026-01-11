@@ -5,11 +5,14 @@ class Program(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     coordinator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='coordinated_programs')
+    # coordinator=models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField()
     capacity = models.PositiveIntegerField(default=50)
     image = models.ImageField(upload_to='program_images/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+  
     
     def __str__(self):
         return self.title

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - YMS{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="fw-bold">Admin Dashboard</h1>
+            <p class="text-muted">Manage users, programs, events, and resources.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- User Management -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0 bg-primary text-white">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-people-fill display-4 mb-3"></i>
+                    <h4 class="card-title">Users</h4>
+                    <p class="card-text">Manage youth and staff roles.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 pb-4 text-center">
+                    <a href="{% url 'user_list' %}" class="btn btn-light fw-bold w-100 stretched-link">Manage Users</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Programs -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0 bg-success text-white">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-mortarboard-fill display-4 mb-3"></i>
+                    <h4 class="card-title">Programs</h4>
+                    <p class="card-text">Create and update educational programs.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 pb-4 text-center">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'program_create' %}" class="btn btn-light fw-bold">Create New</a>
+                        <a href="{% url 'program_list' %}" class="btn btn-outline-light btn-sm">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0 bg-info text-white">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-calendar-event-fill display-4 mb-3"></i>
+                    <h4 class="card-title">Events</h4>
+                    <p class="card-text">Schedule and manage upcoming events.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 pb-4 text-center">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'event_create' %}" class="btn btn-light fw-bold">Create New</a>
+                        <a href="{% url 'event_list' %}" class="btn btn-outline-light btn-sm">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0 bg-warning text-dark">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-folder-fill display-4 mb-3"></i>
+                    <h4 class="card-title">Resources</h4>
+                    <p class="card-text">Upload and manage files.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 pb-4 text-center">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'resource_create' %}" class="btn btn-light fw-bold">Upload New</a>
+                        <a href="{% url 'resource_list' %}" class="btn btn-outline-light btn-sm">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h3>{{ users_count }}</h3>
+                            <p class="text-muted">Total Users</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>{{ programs_count }}</h3>
+                            <p class="text-muted">Active Programs</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>{{ events_count }}</h3>
+                            <p class="text-muted">Upcoming Events</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>{{ resources_count }}</h3>
+                            <p class="text-muted">Files Uploaded</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

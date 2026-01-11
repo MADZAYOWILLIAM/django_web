@@ -5,7 +5,7 @@ from .models import User, Profile
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('username', 'email', 'role')
+        fields = ('username', 'email')
 
     def save(self, commit=True):
         user = super().save(commit=False)

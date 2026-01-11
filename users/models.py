@@ -11,7 +11,7 @@ class User(AbstractUser):
         VOLUNTEER = 'VOLUNTEER', _('Volunteer')
         GUEST = 'GUEST', _('Guest')
 
-    role = models.CharField(max_length=20, choices=Role.choices, default=Role.GUEST)
+    role = models.CharField(max_length=20, choices=Role.choices, default=Role.YOUTH_MEMBER)
     email = models.EmailField(unique=True)
 
     def is_youth_member(self):

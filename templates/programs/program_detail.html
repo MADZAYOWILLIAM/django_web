@@ -20,7 +20,7 @@
             <div class="d-flex gap-3 mb-4 text-muted">
                 <span><i class="bi bi-calendar-event me-2"></i>{{ program.start_date }} - {{ program.end_date }}</span>
                 <span><i class="bi bi-person-badge me-2"></i>{{
-                    program.coordinator.get_full_name|default:program.coordinator.username }}</span>
+                    program.coordinator.get_full_name|default:program.coordinator.username}}</span>
             </div>
             <div class="prose">
                 {{ program.description|linebreaks }}
@@ -36,7 +36,21 @@
                     </div>
                     <!-- Add enrollment logic here later -->
                     <div class="d-grid">
-                        <button class="btn btn-primary btn-lg">Apply Now</button>
+                        {% if user.is_authenticated %}
+                        {% if is_enrolled %}
+                        <button class="btn btn-success btn-lg" disabled>
+                            <i class="bi bi-check-circle-fill me-2"></i>Enrolled
+                        </button>
+                        {% else %}
+                        <form action="{% url 'program_enroll' program.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Apply Now</button>
+                        </form>
+                        {% endif %}
+                        {% else %}
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-primary btn-lg">Login to
+                            Apply</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

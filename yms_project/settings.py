@@ -23,9 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q1r3@%5%x9efqn7(nx5&6(j^wdsv3fxw1$q@&lm7lrv_w(%+zj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = false
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '10.0.2.153',  # 👈 your PC IP
+]
+
 
 
 # Application definition
@@ -132,7 +137,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Crispy Forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 # Custom User Model
 AUTH_USER_MODEL = 'users.User'
 

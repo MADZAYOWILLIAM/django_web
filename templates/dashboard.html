@@ -23,6 +23,19 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="#" class="list-group-item list-group-item-action active">Overview</a>
+                    {% if user.is_admin %}
+                    <a href="{% url 'program_create' %}"
+                        class="list-group-item list-group-item-action fw-bold text-primary">
+                        <i class="bi bi-plus-circle me-2"></i>Create Program
+                    </a>
+                    <a href="{% url 'event_create' %}"
+                        class="list-group-item list-group-item-action fw-bold text-primary">
+                        <i class="bi bi-calendar-plus me-2"></i>Create Event
+                    </a>
+                    <a href="{% url 'user_list' %}" class="list-group-item list-group-item-action fw-bold text-primary">
+                        <i class="bi bi-people-fill me-2"></i>Manage Users
+                    </a>
+                    {% endif %}
                     <a href="#" class="list-group-item list-group-item-action">My Profile</a>
                     <a href="#" class="list-group-item list-group-item-action">My Programs</a>
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
@@ -38,7 +51,7 @@
                     <div class="card bg-primary text-white h-100">
                         <div class="card-body">
                             <h5 class="card-title">Enrolled Programs</h5>
-                            <p class="display-6 fw-bold">0</p>
+                            <p class="display-6 fw-bold">{{ enrolled_programs_count }}</p>
                         </div>
                     </div>
                 </div>
@@ -46,18 +59,11 @@
                     <div class="card bg-success text-white h-100">
                         <div class="card-body">
                             <h5 class="card-title">Upcoming Events</h5>
-                            <p class="display-6 fw-bold">0</p>
+                            <p class="display-6 fw-bold">{{ registered_events_count }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card bg-info text-white h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Mentorship Sessions</h5>
-                            <p class="display-6 fw-bold">0</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <div class="card">

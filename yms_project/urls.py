@@ -13,6 +13,8 @@ urlpatterns = [
     path('programs/', include('programs.urls')),
     path('events/', include('events.urls')),
     path('mentorship/', include('mentorship.urls')),
+    path('resources/', include('resources.urls')),
+    path('', include('blog.urls')),
 ]
 
 if settings.DEBUG:
