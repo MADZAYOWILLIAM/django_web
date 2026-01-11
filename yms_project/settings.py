@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'mentorship.apps.MentorshipConfig',
     'resources.apps.ResourcesConfig',
+    'services.apps.ServicesConfig',
 ]
 
 # MIDDLEWARE = [
